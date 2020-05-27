@@ -1,3 +1,7 @@
+USE `humanrev`;
+
+INSERT INTO users (username) VALUES ('testuser');
+
 -- Insert Privileges -------------------------------------------
 INSERT INTO privileges (id, name, description)
 VALUES (1, 'Approver', 'Can approve human reviews');

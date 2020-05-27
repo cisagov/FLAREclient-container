@@ -15,7 +15,7 @@ COPY mysql/201911081437_user_admin.sql              /schemas/
 COPY mysql/201911121005_main_tables.sql             /schemas/
 COPY mysql/201911121030_load_lookup_tables.sql      /schemas/
 COPY mysql/201912161600_insert_sample_approver.sql  /schemas/
-#ADD docker/copy_certs_entrypoint.sh /copy_certs_entrypoint.sh
+ADD docker/copy_certs_entrypoint.sh                 /copy_certs_entrypoint.sh
 #COPY docker/certs/ /var/opt/mysql_certs/
 ADD docker/51-load-schemas.sh                       /usr/share/container-scripts/mysql/init/51-load-schemas.sh
 

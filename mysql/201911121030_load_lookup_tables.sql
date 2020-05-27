@@ -1,4 +1,4 @@
---- Insert Values for the STATUS_LOOKUP table -----------------------------
+USE `humanrev`;
 
 INSERT INTO status_lookup (id, status_code, name, description)
 VALUES (1, 'A', 'Aborted', 'Job Aborted While In Progress');

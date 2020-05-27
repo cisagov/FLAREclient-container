@@ -1,3 +1,5 @@
+USE `humanrev`;
+
 -- Creates tables for users, roles, privileges and session -------------
 
 CREATE TABLE IF NOT EXISTS privileges (

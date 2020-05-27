@@ -1,3 +1,5 @@
+USE `humanrev`;
+
 -- Creates Lookup tables in the proper order ---------------------------
 
 -- Not actually used as a foreign key; just for documentation purposes

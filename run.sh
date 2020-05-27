@@ -6,4 +6,5 @@ docker run \
     --network ais20 \
     -e MYSQL_USER=hr \
     -e MYSQL_PASSWORD="hrDatabasePassword!@#$%" \
+    --name hr-db \
     hr-db

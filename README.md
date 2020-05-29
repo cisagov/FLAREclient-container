@@ -6,7 +6,7 @@ for Human Review (https://git.ecicd.dso.ncps.us-cert.gov/optimus/Human_Review).
 ## Docker Operation
 In order to run the human review service as a container, execute the `run.py` script.
 
-#### Configuration
+#### Docker Configuration
 Configuration of the container is accomplished by passing in different
 environmental variables to the container. In order to do this, change the 
 values provided with the `-e` flags. **All configurable environment 
@@ -20,3 +20,9 @@ To:
 ```bash
 -e MYSQL_USER=someOtherUser \
 ```
+
+#### SSL Configuration
+
+TBD
+
+

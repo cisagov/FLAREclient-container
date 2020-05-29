@@ -2,6 +2,7 @@
 
 docker build --build-arg USE_DEV_CERTS=true -t hr-db .
 docker network create -d bridge ais20
+docker rm -f hr-db
 docker run \
     --network ais20 \
     -e MYSQL_USER=hr \

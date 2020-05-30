@@ -1,0 +1,55 @@
+---
+apiVersion: v1
+kind: Template
+metadata:
+  name: deployment-config-template
+objects:
+  - apiVersion: v1
+    kind: DeploymentConfig
+    metadata:
+      name: hr-db
+    spec:
+      replicas: 1
+      selector:
+        name: hr-db
+      strategy:
+        type: Rolling
+        rollingParams:
+      template:
+        metadata:
+          labels:
+            name: hr-db
+        spec:
+          containers:
+          - env:
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: hr-db
+                  key: username
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hr-db
+                  key: password
+            imagePullPolicy: Always
+            name: hr-db
+            image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/hr-db:${IMAGE_VERSION}
+          serviceAccountName: "database-sa"
+          imagePullSecrets:
+            - name: artifactory-puller
+      triggers:
+      - type: ConfigChange
+parameters:
+  - name: IMAGE_NAMESPACE
+    displayName: Docker image namespace
+    description: The docker namespace that the image belongs to
+    required: true
+  - name: IMAGE_VERSION
+    displayName: Image Version
+    description: Docker image version
+    required: true
+  - name: DOCKER_REPO_URL
+    displayName: Docker Repo URL
+    description: Docker repository URL
+    required: true

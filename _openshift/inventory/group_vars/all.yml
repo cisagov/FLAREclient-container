@@ -24,7 +24,7 @@ openshift_cluster_content:
         ocp_url: "{{ ocp_url }}"
     content:
       - name: Access Secrets
-        template: "{{ playbook_dir }}/templates/secrets-hr-db.yaml"
+        template: "{{ playbook_dir }}/templates/secrets-humanreview-db.yaml"
         params_from_vars: "{{ project_params }}"
         namespace: "{{ project_params.NAMESPACE }}"
         tags:

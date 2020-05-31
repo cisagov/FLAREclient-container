@@ -8,8 +8,8 @@ objects:
     kind: Service
     metadata:
       labels:
-        external: hr-db
-      name: hr-db
+        external: humanreview-db
+      name: humanreview-db
     spec:
       ports:
       - nodePort: 0
@@ -18,7 +18,7 @@ objects:
         targetPort: 3310
       sessionAffinity: None
       selector:
-        name: hr-db
+        name: humanreview-db
       type: ClusterIP
     status:
       loadBalancer: {}

@@ -7,34 +7,34 @@ objects:
   - apiVersion: v1
     kind: DeploymentConfig
     metadata:
-      name: hr-db
+      name: humanreview-db
     spec:
       replicas: 1
       selector:
-        name: hr-db
+        name: humanreview-db
       strategy:
         type: Rolling
         rollingParams:
       template:
         metadata:
           labels:
-            name: hr-db
+            name: humanreview-db
         spec:
           containers:
           - env:
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: hr-db
+                  name: humanreview-db
                   key: username
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: hr-db
+                  name: humanreview-db
                   key: password
             imagePullPolicy: Always
-            name: hr-db
-            image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/hr-db:${IMAGE_VERSION}
+            name: humanreview-db
+            image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/humanreview-db:${IMAGE_VERSION}
           serviceAccountName: "database-sa"
           imagePullSecrets:
             - name: artifactory-puller

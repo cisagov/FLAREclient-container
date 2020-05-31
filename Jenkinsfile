@@ -4,7 +4,7 @@ library(
 
 databasePipeline(
         applicationName: 'flarecloud',
-        serviceName: 'hr-db',
-        baseDirectory: 'hr-db',
+        serviceName: 'humanreview-db',
+        baseDirectory: '.',
         namespacePostfix: ''
 )

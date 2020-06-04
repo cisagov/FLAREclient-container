@@ -9,6 +9,12 @@ In order to run the human review service as a container, execute the `run.sh` sc
 If an instance of the container is already running, you may have to 
 run `docker rm -f humanreview-db` first to remove the existing container.
 
+#### MySQL Schemas
+The docker container will load schemas in alpha/numeric order by the script 
+`docker/51-load-schemas.sh`. This bash file will load schema files from whatever is loaded
+with the `Dockerfile` into the container directory `/schemas/`. 
+
+
 #### Docker Configuration
 Configuration of the container is accomplished by passing in different
 environmental variables to the container. In order to do this, change the 

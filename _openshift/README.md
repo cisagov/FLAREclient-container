@@ -1,5 +1,5 @@
 # Openshift Applier
-This directory contains files used to deploy FLAREcloud using the openshift applier.
+This directory contains files used to deploy Human Review using the openshift applier.
 https://github.com/redhat-cop/openshift-applier. The steps must be taken to deploy
 FLAREcloud as well:
 

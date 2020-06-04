@@ -1,0 +1,4 @@
+source purge.sql
+source 201911081437_user_admin.sql
+source 201911121005_main_tables.sql
+source 201911121030_load_lookup_tables.sql

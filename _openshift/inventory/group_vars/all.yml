@@ -1,0 +1,62 @@
+---
+ansible_host: localhost
+ansible_connection: local
+
+project_params:
+  NAMESPACE: "{{ namespace_name }}"
+  IMAGE_NAMESPACE: "{{ image_namespace_name }}"
+  DOCKER_REPO_URL: "{{ docker_repo_url }}"
+
+build_config_params:
+  SERVICE: "{{ service }}"
+
+deployment_config_params:
+  IMAGE_VERSION: "{{ image_version if image_version is defined else 'latest' }}"
+
+openshift_cluster_content:
+  - galaxy_requirements:
+      - "{{ playbook_dir }}/roles/requirements.yml"
+  - object: Create Application Resources
+    pre_steps:
+    - role: openshift_cluster_login
+      vars:
+        ocp_token: "{{ ocp_token }}"
+        ocp_url: "{{ ocp_url }}"
+    content:
+      - name: Access Secrets
+        template: "{{ playbook_dir }}/templates/secrets-humanreview-db.yaml"
+        params_from_vars: "{{ project_params }}"
+        namespace: "{{ project_params.NAMESPACE }}"
+        tags:
+          - deploy
+      - name: Service Account Database
+        template: "{{ playbook_dir }}/templates/sa-database.yaml"
+        params_from_vars: "{{ project_params }}"
+        namespace: "{{ project_params.NAMESPACE }}"
+        tags:
+          - deploy
+      - name: Security Context Constraint Database
+        template: "{{ playbook_dir }}/templates/scc-database.yaml"
+        params_from_vars: "{{ project_params }}"
+        namespace: "{{ project_params.NAMESPACE }}"
+        tags:
+          - deploy_scc
+      - name: Build Config
+        template: "{{ playbook_dir }}/templates/buildConfig.yaml"
+        params_from_vars: "{{ project_params | combine(build_config_params) }}"
+        namespace: "{{ project_params.NAMESPACE }}"
+        tags:
+          - create-build-config
+      - name: Deployment Config
+        template: "{{ playbook_dir }}/templates/deploymentConfig.yaml"
+        params_from_vars: "{{ project_params | combine(deployment_config_params) }}"
+        namespace: "{{ project_params.NAMESPACE }}"
+        tags:
+          - deploy
+      - name: Service
+        template: "{{ playbook_dir }}/templates/service.yaml"
+        params_from_vars: "{{ project_params }}"
+        namespace: "{{ project_params.NAMESPACE }}"
+        tags:
+          - deploy
+

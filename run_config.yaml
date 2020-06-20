@@ -1,0 +1,2 @@
+env:
+build_script: "run.sh"

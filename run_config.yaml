@@ -1,2 +1,4 @@
 env:
-build_script: "run.sh"
+build_script: "build-docker-image.sh"
+run_script: "run.sh"
+ready_string: "Plugin ready for connections"

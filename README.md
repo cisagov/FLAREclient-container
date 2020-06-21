@@ -4,7 +4,12 @@ for Human Review (https://git.ecicd.dso.ncps.us-cert.gov/optimus/Human_Review).
 
 
 ## Docker Operation
-In order to run the human review service as a container, execute the `run.sh` script.
+In order to run the human review service as a container, navigate to the root
+directory of this repository, then execute the following commands:
+```bash
+./build-docker-image.sh   # if you haven't yet built this image
+./run.sh
+```
 
 If an instance of the container is already running, you may have to 
 run `docker rm -f humanreview-db` first to remove the existing container.

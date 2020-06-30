@@ -6,5 +6,5 @@ databasePipeline(
         applicationName: 'flarecloud',
         serviceName: 'humanreview-db',
         baseDirectory: '.',
-        namespacePostfix: ''
+        namespacePostfix: 'demo'
 )

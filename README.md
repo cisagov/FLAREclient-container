@@ -4,6 +4,9 @@ for Human Review (https://git.ecicd.dso.ncps.us-cert.gov/optimus/Human_Review).
 
 
 ## Docker Operation
+**It is recommended to use the AIS-run utility (https://git.ecicd.dso.ncps.us-cert.gov/fireteam/AIS-run) to run the Human Review 
+service.**
+
 In order to run the human review service as a container, navigate to the root
 directory of this repository, then execute the following commands:
 ```bash

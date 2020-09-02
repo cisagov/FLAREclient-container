@@ -7,34 +7,28 @@ objects:
   - apiVersion: v1
     kind: DeploymentConfig
     metadata:
-      name: humanreview-db
+      name: flareclient-mongo
     spec:
       replicas: 1
       selector:
-        name: humanreview-db
+        name: flareclient-mongo
       strategy:
         type: Rolling
         rollingParams:
       template:
         metadata:
           labels:
-            name: humanreview-db
+            name: flareclient-mongo
         spec:
           containers:
           - env:
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: humanreview-db
-                  key: username
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: humanreview-db
-                  key: password
+            - name: MONGODB_ADMIN
+              value: admin
+            - name: MONGODB_ADMIN_PASSWORD
+              value: password            
             imagePullPolicy: Always
-            name: humanreview-db
-            image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/humanreview-db:${IMAGE_VERSION}
+            name: flareclient-mongo
+            image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-mongo:${IMAGE_VERSION}
           serviceAccountName: "database-sa"
           imagePullSecrets:
             - name: artifactory-puller

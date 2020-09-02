@@ -1,6 +1,6 @@
-# ![hr_logo](icon.png) Human_Review_Db
-This repository contains the schemas necessary to create a database
-for Human Review (https://git.ecicd.dso.ncps.us-cert.gov/optimus/Human_Review).
+# ![hr_logo](icon.png) FlareClient_mongo
+This repository contains the schemas necessary to create a mongo instance
+for Flareclient(https://git.ecicd.dso.ncps.us-cert.gov/fire/FLAREclient-Java).
 
 
 ## Docker Operation
@@ -15,12 +15,7 @@ directory of this repository, then execute the following commands:
 ```
 
 If an instance of the container is already running, you may have to 
-run `docker rm -f humanreview-db` first to remove the existing container.
-
-#### MySQL Schemas
-The docker container will load schemas in alpha/numeric order by the script 
-`docker/51-load-schemas.sh`. This bash file will load schema files from whatever is loaded
-with the `Dockerfile` into the container directory `/schemas/`. 
+run `docker rm -f flareclient-mongo` first to remove the existing container.
 
 
 #### Docker Configuration
@@ -29,14 +24,6 @@ environmental variables to the container. In order to do this, change the
 values provided with the `-e` flags. **All configurable environment 
 variables are listed in `run.sh`**.
 
-For example, if you want to change the mysql user for human review, change the following line:
-```bash
--e MYSQL_USER=hr \
-```
-To:
-```bash
--e MYSQL_USER=someOtherUser \
-```
 
 #### SSL Configuration
 

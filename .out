@@ -1,0 +1,8 @@
+Sending build context to Docker daemon 114.2 kB
+Step 1/2 : FROM mongo:3.6.3
+ ---> 5b1317f8158f
+Step 2/2 : EXPOSE 27017
+ ---> Using cache
+ ---> eb48bb7493b7
+[91m[Warning] One or more build-args [USE_DEV_CERTS] were not consumed
+[0mSuccessfully built eb48bb7493b7

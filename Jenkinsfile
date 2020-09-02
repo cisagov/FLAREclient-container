@@ -4,7 +4,7 @@ library(
 
 databasePipeline(
         applicationName: 'flarecloud',
-        serviceName: 'humanreview-db',
+        serviceName: 'flareclient-mongo',
         baseDirectory: '.',
-        namespacePostfix: 'demo'
+        namespacePostfix: 'rwoo'
 )

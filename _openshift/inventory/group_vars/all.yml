@@ -24,23 +24,11 @@ openshift_cluster_content:
         ocp_url: "{{ ocp_url }}"
     content:
       - name: Access Secrets
-        template: "{{ playbook_dir }}/templates/secrets-humanreview-db.yaml"
+        template: "{{ playbook_dir }}/templates/secrets-flareclient-mongo.yaml"
         params_from_vars: "{{ project_params }}"
         namespace: "{{ project_params.NAMESPACE }}"
         tags:
           - deploy
-      - name: Service Account Database
-        template: "{{ playbook_dir }}/templates/sa-database.yaml"
-        params_from_vars: "{{ project_params }}"
-        namespace: "{{ project_params.NAMESPACE }}"
-        tags:
-          - deploy
-      - name: Security Context Constraint Database
-        template: "{{ playbook_dir }}/templates/scc-database.yaml"
-        params_from_vars: "{{ project_params }}"
-        namespace: "{{ project_params.NAMESPACE }}"
-        tags:
-          - deploy_scc
       - name: Build Config
         template: "{{ playbook_dir }}/templates/buildConfig.yaml"
         params_from_vars: "{{ project_params | combine(build_config_params) }}"

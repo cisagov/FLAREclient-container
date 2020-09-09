@@ -23,7 +23,13 @@ objects:
           containers:
           - env:
             - name: MONGODB_ADMIN_PASSWORD
-              value: QWASZX23wesdxc            
+              value: QWASZX23wesdxc    
+            - name: MONGODB_USER
+              value: user    
+            - name: MONGODB_PASSWORD
+              value: qwaszx23WESDXC                 
+            - name: MONGODB_DATABASE
+              value: flareclient   
             imagePullPolicy: Always
             name: flareclient-mongo
             image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-mongo:${IMAGE_VERSION}

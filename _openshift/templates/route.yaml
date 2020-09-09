@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: Template
+metadata:
+  name: route-template
+objects:
+  - apiVersion: v1
+    kind: Route
+    metadata:
+      name: flareclient-ui
+    spec:
+#      host: flareclient-ui.${NAMESPACE}.${APPS_SUBDOMAIN}
+      host: flareclient-ui.${NAMESPACE}.${APPS_SUBDOMAIN}
+      to:
+        kind: Service
+        name: flareclient-ui
+      tls:
+        termination: passthrough
+parameters:
+  - name: NAMESPACE
+    displayName: Namespace (Openshift project)
+    description: Openshift project this application resides in
+    required: true
+  - name: APPS_SUBDOMAIN
+    displayName: Application Subdomain
+    description: The subdomain that applications are placed under
+    required: true

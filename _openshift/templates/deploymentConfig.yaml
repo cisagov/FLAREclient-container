@@ -27,6 +27,7 @@ objects:
             imagePullPolicy: Always
             name: flareclient-mongo
             image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-mongo:${IMAGE_VERSION}
+          serviceAccountName: "database-sa"
           imagePullSecrets:
             - name: artifactory-puller
       triggers:

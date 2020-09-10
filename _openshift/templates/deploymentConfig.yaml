@@ -21,21 +21,33 @@ objects:
             name: flareclient-mongo
         spec:
           containers:
-          - env:
-            - name: MONGODB_ADMIN_PASSWORD
-              value: QWASZX23wesdxc    
-            - name: MONGODB_USER
-              value: user    
-            - name: MONGODB_PASSWORD
-              value: qwaszx23WESDXC                 
-            - name: MONGODB_DATABASE
-              value: flareclient   
+            - env:
+              - name: MONGODB_ADMIN_PASSWORD
+                value: QWASZX23wesdxc    
+              - name: MONGODB_USER
+                value: user    
+              - name: MONGODB_PASSWORD
+                value: qwaszx23WESDXC                 
+              - name: MONGODB_DATABASE
+                value: flareclient   
+              - name: LOG_LEVEL
+                value: "debug"                  
+              - name: LOG_LEVEL_SPRING
+                value: "warn"
+              - name: LOG_LEVEL_HIBERNATE
+                value: "warn"
+              - name: SECRETS_DIR
+                value: "/mnt/secrets/"
+            volumeMounts:
+              - name: secrets
+                mountPath: /mnt/secrets
+                readOnly: true                
             imagePullPolicy: Always
             name: flareclient-mongo
             image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-mongo:${IMAGE_VERSION}
-          serviceAccountName: "database-sa"
-          imagePullSecrets:
-            - name: artifactory-puller
+            serviceAccountName: "database-sa"
+            imagePullSecrets:
+              - name: artifactory-puller
       triggers:
       - type: ConfigChange
 parameters:

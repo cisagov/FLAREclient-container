@@ -13,6 +13,9 @@ build_config_params:
 deployment_config_params:
   IMAGE_VERSION: "{{ image_version if image_version is defined else 'latest' }}"
 
+route_params:
+  APPS_SUBDOMAIN: "{{ apps_subdomain if apps_subdomain is defined else 'apps.dev.devsecops.gov' }}"
+  
 openshift_cluster_content:
   - galaxy_requirements:
       - "{{ playbook_dir }}/roles/requirements.yml"

@@ -9,8 +9,7 @@ objects:
     metadata:
       name: flareclient-mongo
     spec:
-#      host: flareclient-ui.${NAMESPACE}.${APPS_SUBDOMAIN}
-      host: flareclient-mongo.${NAMESPACE}
+      host: flareclient-ui.${NAMESPACE}.${APPS_SUBDOMAIN}      
       to:
         kind: Service
         name: flareclient-mongo

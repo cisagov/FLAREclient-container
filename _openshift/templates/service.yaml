@@ -8,8 +8,8 @@ objects:
     kind: Service
     metadata:
       labels:
-        external: flareclient-mongo
-      name: flareclient-mongo
+        external: flareclient-db
+      name: flareclient-db
     spec:
       ports:
       - nodePort: 0
@@ -18,7 +18,7 @@ objects:
         targetPort: 27017
       sessionAffinity: None
       selector:
-        name: flareclient-mongo
+        name: flareclient-db
       type: ClusterIP
     status:
       loadBalancer: {}

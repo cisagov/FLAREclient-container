@@ -7,5 +7,5 @@
 
 - src: https://git.dso.ncps.us-cert.gov/dso-pipeline/ansible-role-openshift_cluster_login.git
   scm: git
-  version: master
+  version: v1.0
   name: openshift_cluster_login

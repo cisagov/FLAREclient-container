@@ -21,6 +21,13 @@ objects:
             name: flareclient-db
         spec:
           containers:
+            - env:
+              - name: MONGODB_ADMIN_PASSWORD
+                value: 12qwaszx@#WESDXC
+              - name: IM_DASHBOARD_UI_SVC_HOST
+                value: flareclient-db.${NAMESPACE}.svc
+              - name: IM_DASHBOARD_UI_SVC_PORT
+                value: "8443"
               imagePullPolicy: Always
               name: flareclient-db
               image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-db:${IMAGE_VERSION}

@@ -21,7 +21,6 @@ objects:
             name: flareclient-db
         spec:
           containers:
-            - env:
               imagePullPolicy: Always
               name: flareclient-db
               image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-db:${IMAGE_VERSION}

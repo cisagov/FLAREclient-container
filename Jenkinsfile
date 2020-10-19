@@ -4,7 +4,7 @@ library(
 
 databasePipeline(
         applicationName: 'flarecloud',
-        serviceName: 'flareclient-mongo',
+        serviceName: 'flareclient-db',
         baseDirectory: '.',
-        namespacePostfix: 'rwoo'
+        namespacePostfix: 'tmai'
 )

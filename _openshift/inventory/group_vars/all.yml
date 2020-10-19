@@ -13,21 +13,18 @@ build_config_params:
 deployment_config_params:
   IMAGE_VERSION: "{{ image_version if image_version is defined else 'latest' }}"
 
-route_params:
-  APPS_SUBDOMAIN: "{{ apps_subdomain if apps_subdomain is defined else 'apps.dev.devsecops.gov' }}"
-  
 openshift_cluster_content:
   - galaxy_requirements:
       - "{{ playbook_dir }}/roles/requirements.yml"
   - object: Create Application Resources
     pre_steps:
-    - role: openshift_cluster_login
-      vars:
-        ocp_token: "{{ ocp_token }}"
-        ocp_url: "{{ ocp_url }}"
+      - role: openshift_cluster_login
+        vars:
+          ocp_token: "{{ ocp_token }}"
+          ocp_url: "{{ ocp_url }}"
     content:
       - name: Access Secrets
-        template: "{{ playbook_dir }}/templates/secrets-flareclient-mongo.yaml"
+        template: "{{ playbook_dir }}/templates/secrets-flareclient-db.yaml"
         params_from_vars: "{{ project_params }}"
         namespace: "{{ project_params.NAMESPACE }}"
         tags:
@@ -49,12 +46,6 @@ openshift_cluster_content:
         params_from_vars: "{{ project_params | combine(build_config_params) }}"
         namespace: "{{ project_params.NAMESPACE }}"
         tags:
-          - create-build-config          
-      - name: Build Config
-        template: "{{ playbook_dir }}/templates/buildConfig.yaml"
-        params_from_vars: "{{ project_params | combine(build_config_params) }}"
-        namespace: "{{ project_params.NAMESPACE }}"
-        tags:
           - create-build-config
       - name: Deployment Config
         template: "{{ playbook_dir }}/templates/deploymentConfig.yaml"
@@ -69,10 +60,3 @@ openshift_cluster_content:
         tags:
           - deploy
 
-      - name: Route
-        template: "{{ playbook_dir }}/templates/route.yaml"
-        params_from_vars: "{{ project_params | combine(route_params) }}"
-        namespace: "{{ project_params.NAMESPACE }}"
-        tags:
-          - deploy
-  

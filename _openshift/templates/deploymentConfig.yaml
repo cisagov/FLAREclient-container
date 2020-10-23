@@ -26,12 +26,12 @@ objects:
                 valueFrom:
                   secretKeyRef:
                     name: flareclient-db
-                    key: username
+                    key: password
               - name: MONGODB_ADMIN_USERNAME
                 valueFrom:
                   secretKeyRef:
                     name: flareclient-db
-                    key: password
+                    key: username
               imagePullPolicy: Always
               name: flareclient-db
               image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-db:${IMAGE_VERSION}

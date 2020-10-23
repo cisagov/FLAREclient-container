@@ -22,16 +22,16 @@ objects:
         spec:
           containers:
             - env:
-                - name: MONGODB_ADMIN_PASSWORD
-                    valueFrom:
-                      secretKeyRef:
-                        name: flareclient-db
-                        key: username
-                - name: MONGODB_ADMIN_USERNAME
-                  valueFrom:
-                    secretKeyRef:
-                      name: flareclient-db
-                      key: password
+              - name: MONGODB_ADMIN_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: flareclient-db
+                    key: username
+              - name: MONGODB_ADMIN_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: flareclient-db
+                    key: password
               imagePullPolicy: Always
               name: flareclient-db
               image: ${DOCKER_REPO_URL}/${IMAGE_NAMESPACE}/flareclient-db:${IMAGE_VERSION}

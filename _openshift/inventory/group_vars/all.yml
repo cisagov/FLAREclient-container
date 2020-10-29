@@ -18,13 +18,13 @@ openshift_cluster_content:
       - "{{ playbook_dir }}/roles/requirements.yml"
   - object: Create Application Resources
     pre_steps:
-    - role: openshift_cluster_login
-      vars:
-        ocp_token: "{{ ocp_token }}"
-        ocp_url: "{{ ocp_url }}"
+      - role: openshift_cluster_login
+        vars:
+          ocp_token: "{{ ocp_token }}"
+          ocp_url: "{{ ocp_url }}"
     content:
       - name: Access Secrets
-        template: "{{ playbook_dir }}/templates/secrets-humanreview-db.yaml"
+        template: "{{ playbook_dir }}/templates/secrets-flareclient-db.yaml"
         params_from_vars: "{{ project_params }}"
         namespace: "{{ project_params.NAMESPACE }}"
         tags:

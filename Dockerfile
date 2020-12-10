@@ -12,6 +12,4 @@ RUN yum update -y --setopt=tsflags=nodocs \
 
 USER 184
 
-ENV MONGODB_ADMIN_PASSWORD=QWASZX23wesdxc
-
 EXPOSE 27017

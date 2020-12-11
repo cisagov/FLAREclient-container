@@ -6,5 +6,5 @@ databasePipeline(
         applicationName: 'flarecloud',
         serviceName: 'flareclient-db',
         baseDirectory: '.',
-        namespacePostfix: ''
+        namespacePostfix: 'jnguyen'
 )

@@ -26,7 +26,7 @@
           dockerStrategy:
             dockerfilePath: ./Dockerfile
             pullSecret:
-              name: 'artifactory-puller'
+              name: 'artifactory'
           type: Docker
         triggers: []
   parameters:

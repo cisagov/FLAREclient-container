@@ -7,8 +7,7 @@ RUN yum update -y --setopt=tsflags=nodocs \
     --enablerepo=rhel-server-rhscl-7-rpms \
     --enablerepo=rhel-7-server-extras-rpms \
     --enablerepo=rhel-7-server-optional-rpms \
-    --enablerepo=rhel-7-server-rpms \
-    sqlite nss-util nss-tools nss-sysinit nss-softokn-freebl nss-softokn nss libicu dbus-libs dbus bind-utils bind-license bind-libs
+    --enablerepo=rhel-7-server-rpms
 
 USER 184
 

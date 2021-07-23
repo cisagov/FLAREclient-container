@@ -1,4 +1,4 @@
-FROM docker.artifactory.apps.ecicd.dso.ncps.us-cert.gov/rhmap47/mongodb:latest
+FROM centos/mongodb-36-centos7:latest
 
 ENV MONGODB_ADMIN_PASSWORD=QWASZX23wesdxc
 

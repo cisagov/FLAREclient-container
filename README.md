@@ -25,8 +25,4 @@ values provided with the `-e` flags. **All configurable environment
 variables are listed in `run.sh`**.
 
 
-#### SSL Configuration
-
-TBD
-
 

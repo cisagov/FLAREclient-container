@@ -1,6 +1,0 @@
----
-- name: Create Project
-  hosts: seed-hosts
-  tasks:
-    - include_role:
-        name: openshift-applier/roles/openshift-applier

@@ -12,11 +12,11 @@ The FLAREclient-container provides an easy method of installing a TAXII client f
 
 1. Download docker image that contains the flareclient.
 
-``` wget https://github.com/cisagov/FLAREclient-container/releases/download/12-22-2021/ais-client_12-22-2021.tar ```
+``` wget https://github.com/cisagov/FLAREclient-container/releases/download/01-03-2022/ais-client_01-03-2022.tar ```
 
 2. Load image.
 
-```docker load -i ais-client_12-22-2021.tar```
+```docker load -i ais-client_01-03-2022.tar```
 
 3. Create network (if container was never started previously).
 
@@ -24,7 +24,7 @@ The FLAREclient-container provides an easy method of installing a TAXII client f
 
 4. Start container.
 
-```docker run --network ais20 -e CERT_ALIAS="<cert-alias>" -e CERT_KEYSTORE_PASS="<cert-keystore-pass>" -e CERT_TRUSTSTORE_PASS="<cert-truststore-pass>" -e FLARE_CLIENT_SVC_HOST="127.0.0.1" -e FLARE_CLIENT_SVC_PORT="8083" -e JAVA_OPTS="-Xmx2g" -e MAX_REQUEST_SIZE="150M" -e NGINX_DEBUG_LOG="false" -e NGINX_PROXY_TIMEOUT="690s" -e TIMEOUT_API="680000" -e TIMEOUT_DEFAULT="60000" -e TIMEOUT_TAXII21_DOWNLOAD="660000" -e TIMEOUT_TAXII21_MANIFEST="660000" -e TIMEOUT_TAXII21_UPLOAD="660000" -v <absolute-path-to-keystore>:/opt/app/devKeystore.p12:Z -p 443:443 -p 8083:8083 --restart unless-stopped -d ais-client:12-22-2021```
+```docker run --network ais20 -e CERT_ALIAS="<cert-alias>" -e CERT_KEYSTORE_PASS="<cert-keystore-pass>" -e CERT_TRUSTSTORE_PASS="<cert-truststore-pass>" -e FLARE_CLIENT_SVC_HOST="127.0.0.1" -e FLARE_CLIENT_SVC_PORT="8083" -e JAVA_OPTS="-Xmx2g" -e MAX_REQUEST_SIZE="150M" -e NGINX_DEBUG_LOG="false" -e NGINX_PROXY_TIMEOUT="690s" -e TIMEOUT_API="680000" -e TIMEOUT_DEFAULT="60000" -e TIMEOUT_TAXII21_DOWNLOAD="660000" -e TIMEOUT_TAXII21_MANIFEST="660000" -e TIMEOUT_TAXII21_UPLOAD="660000" -v <absolute-path-to-keystore>:/opt/app/devKeystore.p12:Z -p 443:443 -p 8083:8083 --restart unless-stopped -d ais-client:01-03-2022```
 
 ## Adding TAXII Server ##
 

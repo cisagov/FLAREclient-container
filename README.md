@@ -6,7 +6,7 @@ The FLAREclient-container provides an easy method of installing a TAXII client f
 
 1. Ensure Docker (or compatible container platform) that supports Linux containers is installed and running on local device. (https://docs.docker.com/get-docker/)
 
-2. Save personal keystore as P12 with desired private key entry using 'localhost' alias. (https://www.openssl.org/docs/man1.0.2/man1/pkcs12.html).  The location of this file is needed when you start the docker container.
+2. Save personal keystore as P12 with desired private key entry. (https://www.openssl.org/docs/man1.0.2/man1/pkcs12.html).  The location of this file is needed when you start the docker container.
 
 ## Quick Start ##
 
@@ -22,7 +22,17 @@ The FLAREclient-container provides an easy method of installing a TAXII client f
 
 ```docker network create -d bridge ais20```
 
-4. Start container.
+4. Disable or delete old container (if container was started previously).
+
+```# DISABLE OLD CONTAINER```<br>
+```docker stop <container>```<br>
+```docker update --restart=no <container>```
+
+```# DELETE OLD CONTAINER```<br>
+```docker stop <container>```<br>
+```docker rm <container>```
+
+5. Start new container.
 
 ```docker run --network ais20 -e CERT_ALIAS="<cert-alias>" -e CERT_KEYSTORE_PASS="<cert-keystore-pass>" -e CERT_TRUSTSTORE_PASS="<cert-truststore-pass>" -e FLARE_CLIENT_SVC_HOST="127.0.0.1" -e FLARE_CLIENT_SVC_PORT="8083" -e JAVA_OPTS="-Xmx2g" -e MAX_REQUEST_SIZE="150M" -e NGINX_DEBUG_LOG="false" -e NGINX_PROXY_TIMEOUT="690s" -e TIMEOUT_API="680000" -e TIMEOUT_DEFAULT="60000" -e TIMEOUT_TAXII21_DOWNLOAD="660000" -e TIMEOUT_TAXII21_MANIFEST="660000" -e TIMEOUT_TAXII21_UPLOAD="660000" -v <absolute-path-to-keystore>:/opt/app/devKeystore.p12:Z -p 443:443 -p 8083:8083 --restart unless-stopped -d ais-client:01-03-2022```
 

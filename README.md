@@ -1,4 +1,4 @@
-# FLAREclient-container
+# FLAREclient-container (Updating Coming Evening of 03/03/2022!)
 
 The FLAREclient-container provides an easy method of installing a TAXII client for our authorized partners.  This client supports TAXII 1 and 2.
 

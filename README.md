@@ -109,10 +109,6 @@ If you have issues using the code, open an issue on the repository!
 
 You can do this by clicking "Issues" at the top and clicking "New Issue" on the following page.
 
-## Contributing ##
-
-We welcome contributions!  Please see [here](CONTRIBUTING.md) for details.
-
 ## Legal Disclaimer ##
 
 NOTICE

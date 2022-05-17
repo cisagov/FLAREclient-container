@@ -8,6 +8,14 @@ The FLAREclient-container provides an easy method of installing a TAXII client f
 
 2. Save personal keystore as P12 with desired private key entry. (https://www.openssl.org/docs/man1.0.2/man1/pkcs12.html).  The location of this file is needed when you start the docker container.
 
+## Resource Requirements ##
+
+We recommend the Docker host satisfy the minimum resource requirements below. The recommendation is based on internal testing.
+
+* 4 vCPUs (1 socket x 2 cores x 2 threads)
+* 4 GB of memory
+* 10 GB of storage space (depends on quantity of STIX downloaded)
+
 ## Quick Start ##
 
 1. Download docker image that contains the flareclient.

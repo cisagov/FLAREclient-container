@@ -6,23 +6,25 @@ services:
   ais-client:
     image: "${CLIENT_NAME:-ais-client}"
     container_name: "${CLIENT_NAME:-ais-client}"
+    privileged: true
     restart: unless-stopped
-    # entrypoint: /opt/app/entrypoint.sh
     # networks:
-    #   external-bridge:
+    #   ais-bridge:
     #     aliases:
     #       - ais-client-bridge
     ports:
-      - 443:443
       - 8083:8083
+      - 443:443
     volumes:
       - ${CERT_PATH?err}:/opt/app/devKeystore.p12:Z
       - ${CERT_PATH?err}:/opt/app/keystore.p12:Z
+      - ${SECRETS_DIR?err}:/opt/app/secrets
     environment:
+      - SECRETS_DIR=/opt/app/secrets
       - CERT_ALIAS=${CERT_ALIAS?err}
       - CERT_KEYSTORE_PASS=${CERT_PASS?err}
       - CERT_TRUSTSTORE_PASS=${CERT_PASS?err}
-      - FLARE_CLIENT_SVC_HOST=127.0.0.1
+      - FLARE_CLIENT_SVC_HOST=0.0.0.0
       - FLARE_CLIENT_SVC_PORT=8083
       - JAVA_OPTS=-Xmx2g
       - MAX_REQUEST_SIZE=150M
@@ -35,7 +37,7 @@ services:
       - TIMEOUT_TAXII21_UPLOAD=660000
 
 # networks:
-#   external-bridge:
+#   ais-bridge:
 #     driver: bridge
 #     # external: true
 #     # driver_opts:

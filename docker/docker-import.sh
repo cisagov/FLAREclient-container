@@ -10,9 +10,14 @@ curl -s https://api.github.com/repos/cisagov/FLAREclient-container/releases/late
   | cut -d '"' -f 4 \
   | wget -qO - -i - \
   | docker image load --input -
-  # | docker import - ais-client:latest
-
 
 # docker-compose up -d
 
-# docker-compose down
+####
+# Windows/WSL
+# Get IP of the Docker VM.
+$wsl_ip = (wsl -d "docker-desktop" -- "ifconfig" "eth0" "|" "grep" "inet addr:").trim("").split(":").split()[2]
+# # Bind local port to the Docker VM.
+# netsh interface portproxy add v4tov4 listenport=8080 listenaddress=0.0.0.0 connectport=8080 connectaddress=$wsl_ip
+# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+

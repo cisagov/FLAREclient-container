@@ -15,15 +15,7 @@ curl -s https://api.github.com/repos/cisagov/FLAREclient-container/releases/late
 ####
 # Credentials from decompilation:
 # admin:12qwaszx@#WESDXC
-# ssl:
-#   key-store: src/main/resources/demouser_ks.jks
-#   key-store-password: 12qwaszx@#WESDXC
-#   key-store-provider: SUN
-#   key-store-type: JKS
-#   trust-store: src/main/resources/ca.jks
-#   trust-store-password: 12qwaszx@#WESDXC
-#   keyAlias: demouser
-
+# user:user
 
 ####
 # Mongo

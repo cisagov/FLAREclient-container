@@ -6,7 +6,8 @@
 version: '3'
 services:
   ais-client:
-    image: 'ais-client'
+    image: "${CLIENT_NAME:-ais-client}"
+    container_name: "${CLIENT_NAME:-ais-client}"
     environment:
       - CERT_ALIAS="ais-client-store.p12"
       - CERT_KEYSTORE_PASS=""

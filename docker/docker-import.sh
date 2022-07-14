@@ -11,12 +11,30 @@ curl -s https://api.github.com/repos/cisagov/FLAREclient-container/releases/late
   | wget -qO - -i - \
   | docker image load --input -
 
-# docker-compose up -d
 
 ####
-# Windows/WSL
-# Get IP of the Docker VM.
-$wsl_ip = (wsl -d "docker-desktop" -- "ifconfig" "eth0" "|" "grep" "inet addr:").trim("").split(":").split()[2]
-# # Bind local port to the Docker VM.
-# netsh interface portproxy add v4tov4 listenport=8080 listenaddress=0.0.0.0 connectport=8080 connectaddress=$wsl_ip
-# docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
+# Credentials from decompilation:
+# admin:12qwaszx@#WESDXC
+# ssl:
+#   key-store: src/main/resources/demouser_ks.jks
+#   key-store-password: 12qwaszx@#WESDXC
+#   key-store-provider: SUN
+#   key-store-type: JKS
+#   trust-store: src/main/resources/ca.jks
+#   trust-store-password: 12qwaszx@#WESDXC
+#   keyAlias: demouser
+
+
+####
+# Mongo
+# mongo mongodb://127.0.0.1:27017
+# > use flareclient
+# > db.getCollectionNames().forEach(c => {
+# ...     db[c].find().forEach(d => {
+# ...         print(c);
+# ...         printjson(d)
+# ...     })
+# ... })
+# # Set the admin password to password.
+# > db.user.update({"_id": "user-2"},{$set:{"password": "$2a$10$9YhJwhBbRyP3nYMguxlzh.qcQ4AK/RyBPUIz7gE/PdLHaIbWXhHKq"}})
+

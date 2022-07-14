@@ -20,4 +20,3 @@ $wsl_ip = (wsl -d "docker-desktop" -- "ifconfig" "eth0" "|" "grep" "inet addr:")
 # # Bind local port to the Docker VM.
 # netsh interface portproxy add v4tov4 listenport=8080 listenaddress=0.0.0.0 connectport=8080 connectaddress=$wsl_ip
 # docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
-

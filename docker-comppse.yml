@@ -1,12 +1,15 @@
+# mkdir certs && cd "$_"
+# openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj /CN=ais-client
+# openssl pkcs12 -export -in cert.pem -inkey key.pem -out ais-client-store.p12 -name "AIS Client Certificate"
 # cat ais-client_05-24-2022.tar | docker import - ais-client:05-24-2022
 version: '3'
 services:
   ais-client:
     image: 'ais-client:05-24-2022'
     environment:
-      - CERT_ALIAS="<cert-alias>"
-      - CERT_KEYSTORE_PASS="<cert-keystore-pass>"
-      - CERT_TRUSTSTORE_PASS="<cert-truststore-pass>"
+      - CERT_ALIAS="ais-client-store.p12"
+      - CERT_KEYSTORE_PASS=""
+      - CERT_TRUSTSTORE_PASS=""
       - FLARE_CLIENT_SVC_HOST="127.0.0.1"
       - FLARE_CLIENT_SVC_PORT="8083"
       - JAVA_OPTS="-Xmx2g"
@@ -19,7 +22,7 @@ services:
       - TIMEOUT_TAXII21_MANIFEST="660000"
       - TIMEOUT_TAXII21_UPLOAD="660000"
     volumes:
-      - '<absolute-path-to-keystore>:/opt/app/devKeystore.p12:Z'
+      - "$PWD/certs/:/opt/app/devKeystore.p12:Z'
     ports:
       - '443:443'
       - '8083:8083'

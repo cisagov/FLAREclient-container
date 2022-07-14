@@ -24,7 +24,7 @@ services:
       - TIMEOUT_TAXII21_MANIFEST="660000"
       - TIMEOUT_TAXII21_UPLOAD="660000"
     volumes:
-      - "$PWD/certs/:/opt/app/devKeystore.p12:Z"
+      - "${CERT_PATH?err}:/opt/app/devKeystore.p12:Z"
     ports:
       - '443:443'
       - '8083:8083'

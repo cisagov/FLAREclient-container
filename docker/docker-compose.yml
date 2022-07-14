@@ -34,7 +34,7 @@ services:
 
 networks:
   external-bridge:
-    # external: true
     driver: bridge
+    # external: true
     # driver_opts:
     #   com.docker.network.enable_ipv6: false

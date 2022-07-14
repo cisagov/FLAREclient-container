@@ -18,15 +18,16 @@ services:
     volumes:
       - ${CERT_PATH?err}:/opt/app/devKeystore.p12:Z
       - ${CERT_PATH?err}:/opt/app/keystore.p12:Z
-      - ${SECRETS_DIR?err}:/opt/app/secrets
+      # - ${SECRETS_DIR?err}:/opt/app/secrets
     environment:
-      - SECRETS_DIR=/opt/app/secrets
+      # - SECRETS_DIR=/opt/app/secrets
       - CERT_ALIAS=${CERT_ALIAS?err}
       - CERT_KEYSTORE_PASS=${CERT_PASS?err}
       - CERT_TRUSTSTORE_PASS=${CERT_PASS?err}
       - FLARE_CLIENT_SVC_HOST=0.0.0.0
       - FLARE_CLIENT_SVC_PORT=8083
       - JAVA_OPTS=-Xmx2g
+      # - JAVA_OPTS=-Dspring.profiles.active
       - MAX_REQUEST_SIZE=150M
       - NGINX_DEBUG_LOG=false
       - NGINX_PROXY_TIMEOUT=690s

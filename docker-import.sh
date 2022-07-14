@@ -14,6 +14,6 @@ curl -s https://api.github.com/repos/cisagov/FLAREclient-container/releases/late
   | docker import - ais-client:latest
 
 
-# docker-compose up -d
+# docker-compose up --project-directory="${PWD}/docker" -d
 
 # docker-compose down

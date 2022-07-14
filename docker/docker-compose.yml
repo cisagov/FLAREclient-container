@@ -1,13 +1,21 @@
-# mkdir certs && cd "$_"
-# openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj /CN=ais-client
-# openssl pkcs12 -export -in cert.pem -inkey key.pem -out ais-client-store.p12 -name "AIS Client Certificate"
-# wget -qO - https://github.com/cisagov/FLAREclient-container/releases/latest | docker import - ais-client:05-24-2022
+#!/usr/bin/env docker
+---
 
 version: '3'
 services:
   ais-client:
     image: "${CLIENT_NAME:-ais-client}"
     container_name: "${CLIENT_NAME:-ais-client}"
+    restart: unless-stopped
+    networks:
+      external-bridge:
+        aliases:
+          - ais-client-bridge
+    ports:
+      - '443:443'
+      - '8083:8083'
+    volumes:
+      - "${CERT_PATH?err}:/opt/app/devKeystore.p12:Z"
     environment:
       - CERT_ALIAS="ais-client-store.p12"
       - CERT_KEYSTORE_PASS=""
@@ -23,14 +31,10 @@ services:
       - TIMEOUT_TAXII21_DOWNLOAD="660000"
       - TIMEOUT_TAXII21_MANIFEST="660000"
       - TIMEOUT_TAXII21_UPLOAD="660000"
-    volumes:
-      - "${CERT_PATH?err}:/opt/app/devKeystore.p12:Z"
-    ports:
-      - '443:443'
-      - '8083:8083'
-    networks:
-      - ais20
-    restart: unless-stopped
-  networks:
-    - ais20: {}
 
+networks:
+  external-bridge:
+    external: true
+    driver: bridge
+    # driver_opts:
+    #   com.docker.network.enable_ipv6: false

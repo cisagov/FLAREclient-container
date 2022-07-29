@@ -54,7 +54,7 @@ We recommend the Docker host satisfy the minimum resource requirements below. Th
 
 ```Username: admin```
 ```Password: <password>```
-(Note: Enter same password as the keystore password used in new container startup)
+(Note: Enter the default password)
 
 3. Click the ‘Servers’ link in the left navigation pane.
 
@@ -66,9 +66,9 @@ We recommend the Docker host satisfy the minimum resource requirements below. Th
 
 7. OPTIONAL: Enter the desired description.
 
-8. Click the drop-down arrow for ‘Authorization’ and select “True”.
+8. Click the drop-down arrow for ‘Authorization’ and select “True”, if basic authentication is configured in the TAXII server. Select "False" if certificate authentication is configured in the TAXII server.
 
-9. Enter “admin” in the ‘Username’ field and appropriate password in ‘Password’ field, if basic authentication is configured in the TAXII server.
+9. Enter your username in the ‘Username’ field and appropriate password in ‘Password’ field, if basic authentication is configured in the TAXII server.
    If certificate authentication is configured in the TAXII server, do not enter username and password.
 
 10. Click the ‘ADD SERVER’ button.
@@ -79,7 +79,7 @@ We recommend the Docker host satisfy the minimum resource requirements below. Th
 
 2. Click the Upload icon under the ‘Action’ column for the appropriate collection.
 
-3. Click the ‘Browse’ button, navigate to and select the desired test file, and click ‘Open’ or drag and drop test file from your local directory.
+3. Click the ‘Browse’ button, navigate to and select the desired STIX JSON file, and click ‘Open’ or drag and drop STIX JSON file from your local directory.
 
 4. Click the ‘Publish’ button.
 

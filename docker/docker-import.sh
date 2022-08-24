@@ -10,23 +10,3 @@ curl -s https://api.github.com/repos/cisagov/FLAREclient-container/releases/late
   | cut -d '"' -f 4 \
   | wget -qO - -i - \
   | docker image load --input -
-
-
-####
-# Credentials from decompilation:
-# admin:12qwaszx@#WESDXC
-# user:user
-
-####
-# Mongo
-# mongo mongodb://127.0.0.1:27017
-# > use flareclient
-# > db.getCollectionNames().forEach(c => {
-# ...     db[c].find().forEach(d => {
-# ...         print(c);
-# ...         printjson(d)
-# ...     })
-# ... })
-# # Set the admin password to password.
-# > db.user.update({"_id": "user-2"},{$set:{"password": "$2a$10$9YhJwhBbRyP3nYMguxlzh.qcQ4AK/RyBPUIz7gE/PdLHaIbWXhHKq"}})
-

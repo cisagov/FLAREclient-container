@@ -53,8 +53,10 @@ We recommend the Docker host satisfy the minimum resource requirements below. Th
 2. Sign in using credentials below.
 
 ```Username: admin```
-```Password: <password>```
+
+```Password: 12qwaszx@#WESDXC```
 (Note: Enter the default password)
+
 
 3. Click the ‘Servers’ link in the left navigation pane.
 
